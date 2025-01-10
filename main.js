@@ -6,27 +6,26 @@ Sulla base di queste informazioni dovrà calcolare il prezzo totale del viaggio,
 - va applicato uno sconto del 40% per gli over 65.
 - L'output del prezzo finale va messo fuori in forma umana (con massimo due decimali, per indicare centesimi sul prezzo). Questo richiederà un minimo di ricerca.
  */
-const etàs = prompt("Scrivi la tua età");
+let eta = parseInt( prompt("Scrivi la tua età") )
 
-const km = prompt("Scrivi i km che devi percorrere");
+let km = parseInt( prompt("Scrivi i km che devi percorrere") )
 
-const prezzoBase = 0.21 * Number(km);
+let prezzoBase = 0.21 * km
 
-const età = Number(etàs);
+const scontomin = 0.20
 
-if (età < 18){
-    const prezzoFinale = prezzoBase - (prezzoBase * 20 / 100);
-    let cost = prezzoFinale.toFixed(2);
-    console.log(`Il costo finale è €${cost}`)
+const scontoover = 0.40
+
+let prezzoFinale;
+
+if (eta < 18){
+    prezzoFinale = prezzoBase * scontomin
 }
-else if (età > 65){
-    const prezzoFinale = prezzoBase - (prezzoBase * 40 / 100);
-    let cost = prezzoFinale.toFixed(2);
-    console.log(`Il costo finale è €${cost}`)
+else if (eta > 65){
+    prezzoFinale = prezzoBase * scontoover
 }
 else{
-    const prezzoFinale = prezzoBase;
-    let cost = prezzoFinale.toFixed(2);
-    console.log(`Il costo finale è €${cost}`)
+    prezzoFinale = prezzoBase
 }
 
+console.log(`Il costo finale è €${ prezzoFinale.toFixed (2) }`)
